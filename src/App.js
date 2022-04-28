@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
+import { connect } from 'react-redux'
+//import { BrowserRouter as Router, Switch} from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import HomePage from './pages/Home';
+import NotFoundPage from './pages/NotFound'
+import CounterPage from './pages/Counter'
+
+import { increment, decrement, setTo } from './features/counter'
+// import { getObjectFromLocal } from './features/localStorage';
+import ProductPage from './pages/Product'
+
+export class App extends Component {
+  render() {
+    return (
+      <>
+        <nav>
+          <Link to='/'> Home</Link>
+          <Link to='/counter'> Counter</Link>
+          <Link to='/asdqwe'> a cualquier lado xd</Link>
+          <Link to='/product/huarache-x-stussy-le'> Al producto jej</Link>
+        </nav>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/counter' component={CounterPage} />
+          <Route path='/product/:id' component={ProductPage} />
+          <Route path='*' component={NotFoundPage} />
+        </Switch>
+      </>
+    )
+  }
 }
 
-export default App;
+const mapDispatchToProps = {
+  increment,
+  decrement,
+  setTo,
+};
+
+export default connect(undefined, mapDispatchToProps)(App)
