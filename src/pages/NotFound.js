@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-export class NotFoundPage extends Component {
+export default class NotFoundPage extends Component {
   render() {
-    const {counter} = this.props
+    //const {counter} = this.props
     return (
       <div>
         <h1>Not Found</h1>
@@ -12,6 +12,6 @@ export class NotFoundPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({...state})
+// const mapStateToProps = (state) => ({...state})
 
-export default connect(mapStateToProps)(NotFoundPage)
+// export default connect(mapStateToProps)(NotFoundPage)

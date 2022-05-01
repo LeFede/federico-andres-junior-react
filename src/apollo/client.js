@@ -1,4 +1,12 @@
-import { ApolloClient, gql, HttpLink, InMemoryCache } from "@apollo/client";
+import { 
+  ApolloClient, 
+  //gql, 
+  HttpLink, 
+  InMemoryCache,
+  //ApolloLink,
+  //ApolloError
+} from "@apollo/client";
+
 
 const cache = new InMemoryCache()
 const link = new HttpLink({
@@ -9,5 +17,6 @@ const client = new ApolloClient({
   cache,
   link
 })
+
 
 export default client

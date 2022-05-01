@@ -1,26 +1,48 @@
 import { configureStore, current } from "@reduxjs/toolkit";
 
-import { saveObjectToLocal } from "./localStorage";
+// import { saveObjectToLocal } from "./localStorage";
+import { saveToLocal } from "./localStorage";
 
 import counterReducer from './counter';
+import shopReducer from './shop'
 
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    //counter: counterReducer,
+    shop: shopReducer,
   }
 });
 
-const selectCount = (state) => state.counter.count
+const selectCurrency = (store) => store.getState().shop.currency
+const selectCategory = (store) => store.getState().shop.selectedCategory
 
-let currentValue
+let currentCurrency
+let currentCategory
+
 const handleChange = () => {
 
-  let previousValue = currentValue
-  currentValue = selectCount(store.getState())
+  let previousCategory = currentCategory
+  currentCategory = selectCategory(store)
 
-  if (currentValue !== previousValue) {
-    saveObjectToLocal('counter', store.getState().counter)
+  let previousCurrency = currentCurrency
+  currentCurrency = selectCurrency(store)
+
+  if (currentCurrency !== previousCurrency) {
+    //saveObjectToLocal('counter', store.getState().counter)
+    saveToLocal('currency', currentCurrency)
+    console.log('Saved currency')
   }
+
+  // if (currentCategory !== previousCategory) {
+  
+  //   saveToLocal('selectedCategory', currentCategory);
+  //   console.log('Saved category');
+  // }
+
+  // console.table({
+  //   currentCategory,
+  //   currentCurrency
+  // })
 }
 
 store.subscribe(handleChange)

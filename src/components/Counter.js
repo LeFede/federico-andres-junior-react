@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { increment, decrement, setTo } from '../features/counter'
-import { getFromLocal, getObjectFromLocal } from '../features/localStorage'
+// import { getFromLocal, getObjectFromLocal } from '../features/localStorage'
 
 export class Counter extends Component {
 

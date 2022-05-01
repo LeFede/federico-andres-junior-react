@@ -15,16 +15,73 @@ export const getAllCategories = async () => {
 
 export const getProduct = async (id) => {
   const query = gql`
-    query product($id: String!) {
+    query ($id: String!) {
       product(id: $id) {
         name
+        inStock
+        gallery
+        description
+        category
+        prices {
+          currency {
+            symbol
+            label
+          }
+          amount
+        }
+        attributes {
+          id
+          name
+          type
+          items {
+            id
+            displayValue
+            value
+          }
+        }
       }
     }
   `
 
   const variables = {id}
-
   const res = await client.query({query, variables})
   return res
+}
 
+export const getCurrencies = async () => {
+
+  const query = gql`
+    {
+      currencies {
+        label
+        symbol
+      }
+    }
+  `
+  const res = await client.query({ query });
+  return res;
+}
+
+export const getProductsByCategory = async (title = 'all') => {
+  const query = gql`
+    query ($title: String!) {
+      category(input: {title: $title}) {
+        products {
+          name
+          id
+          prices {
+            amount
+            currency {
+              label
+              symbol
+            }
+          }
+        }
+      }
+    }
+  `
+
+  const variables = { title };
+  const res = await client.query({ query, variables });
+  return res;
 }
