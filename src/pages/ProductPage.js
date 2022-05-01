@@ -23,14 +23,11 @@ class ProductPage extends Component {
   render() {
     const product = this.state.product
     return (
-      <div>
+      <div className='ProductPage'>
         {product 
           ? <SingleProduct {...product}/>
           : <h1>We didn't find anything :(</h1>
         }
-        {/* {
-          this.state.data && cats.map(e => e.name)
-        } */}
       </div>
     )
   }

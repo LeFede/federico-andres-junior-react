@@ -13,7 +13,7 @@ export class Product extends Component {
     }
 
     return (
-      <div>{name}: 
+      <div className='Product'>{name}: 
         <b>
           <small> {final.symbol}</small>
           {final.price}

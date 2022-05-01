@@ -14,7 +14,7 @@ export class Category extends Component {
     const {handleClick} = this
     const {name} = this.props
     return (
-      <div onClick={handleClick}>{name}</div>
+      <div className='Category' onClick={handleClick}>{name}</div>
     )
   }
 }

@@ -12,7 +12,7 @@ export default class HomePage extends Component {
     
 
     return (
-      <div>
+      <div className='HomePage'>
         <h1>Home</h1>
         {/* <h2>{ counter.count }</h2> */}
         {/* <Categories /> */}

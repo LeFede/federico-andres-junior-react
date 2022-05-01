@@ -38,7 +38,7 @@ export class Products extends Component {
     const {products} = state
 
     return (
-      <div>
+      <div className='Product'>
         {products.map(e => <Product key={e.name} {...e}/>)}
       </div>
     )

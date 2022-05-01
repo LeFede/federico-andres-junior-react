@@ -17,6 +17,7 @@ export const getProduct = async (id) => {
   const query = gql`
     query ($id: String!) {
       product(id: $id) {
+        id
         name
         inStock
         gallery

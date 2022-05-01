@@ -37,7 +37,7 @@ export class Currencies extends Component {
     const selectedCurrency = state.selectedCurrency//props.shop?.currency
 
     return (
-      <div>
+      <div className='Currencies'>
         <div>Selected currency: <small>{selectedCurrency}</small></div>
         {currencies.map(e => <div key={e.label} label={e.label} onClick={handleClick}>{e.symbol}</div>)}
       </div>
