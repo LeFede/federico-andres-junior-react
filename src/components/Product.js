@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import '../styles/Product.scss'
+
 export class Product extends Component {
   render() {
-    const {name, prices, shop, id} = this.props
+    const {name, prices, shop, id, gallery} = this.props
     const currentPrice = prices.find(e => e.currency.symbol === shop.currency)
     const final = {
       price: currentPrice.amount,
@@ -13,12 +15,15 @@ export class Product extends Component {
     }
 
     return (
-      <div className='Product'>{name}: 
+      <div className='Product'>
+        <Link to={`/product/${id}`}>
+          <div className='image-container' style={{backgroundImage: `url(${gallery[0]})`}}></div>
+        </Link>
+        <h2>{name}</h2>
         <b>
           <small> {final.symbol}</small>
           {final.price}
         </b>
-        <Link to={`/product/${id}`}>See product</Link>
       </div>
     )
   }

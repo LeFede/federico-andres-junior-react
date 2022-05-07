@@ -17,8 +17,12 @@ export class Products extends Component {
     const {state} = this
 
     getProductsByCategory(state.selectedCategory)
-      .then(({data}) => this.setState({...state, products: data.category.products}))
+      .then(({data}) => {
+        this.setState({...state, products: data.category.products})
+      
+      })
       .catch(err => console.log(err))
+
   }
 
   componentDidUpdate(prevProps) {
@@ -38,7 +42,7 @@ export class Products extends Component {
     const {products} = state
 
     return (
-      <div className='Product'>
+      <div className='Products'>
         {products.map(e => <Product key={e.name} {...e}/>)}
       </div>
     )

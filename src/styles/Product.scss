@@ -1,0 +1,21 @@
+.Products {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 4em;
+
+}
+
+.product-image {
+    width: 100%;
+    object-fit: cover;
+    
+}
+
+.image-container {
+  display: block;
+  background-position: center;
+  background-size: contain;
+  padding-bottom: 100%;
+  background-repeat: no-repeat;
+}

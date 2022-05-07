@@ -5,15 +5,15 @@ import Categories from '../components/Categories';
 
 import Products from '../components/Products';
 
-export default class HomePage extends Component {
+export class HomePage extends Component {
   render() {
 
-    // const { counter } = this.props
-    
-
+    const { shop } = this.props
+    const { selectedCategory } = shop
+    const category = `${selectedCategory[0].toUpperCase()}${selectedCategory.slice(1)}` 
     return (
-      <div className='HomePage'>
-        <h1>Home</h1>
+      <div className='HomePage page'>
+        <h1>{category}</h1>
         {/* <h2>{ counter.count }</h2> */}
         {/* <Categories /> */}
         <Products />
@@ -23,6 +23,6 @@ export default class HomePage extends Component {
 }
 
 
-// const mapStateToProps = (state) => ({...state})
+const mapStateToProps = (state) => ({...state})
 
-// export default connect(mapStateToProps)(HomePage)
+export default connect(mapStateToProps)(HomePage)

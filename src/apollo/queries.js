@@ -70,6 +70,7 @@ export const getProductsByCategory = async (title = 'all') => {
         products {
           name
           id
+          gallery
           prices {
             amount
             currency {

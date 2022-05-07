@@ -5,13 +5,25 @@ import { changeCurrency } from '../features/shop';
 import { getCurrencies } from '../apollo/queries';
 import { getFromLocal } from '../features/localStorage';
 
+import '../styles/Currencies.scss'
+
 export class Currencies extends Component {
   constructor() {
     super()
     this.state = {
       selectedCurrency: getFromLocal('currency') ?? '$',
-      currencies: []
+      currencies: [],
+      showCurrencies: false,
     }
+  }
+
+  showDropdown = () => {
+    const {state} = this
+    const {showCurrencies} = state
+    this.setState({
+      ...state,
+      showCurrencies: !showCurrencies
+    })
   }
 
   componentDidMount = () => {
@@ -32,14 +44,19 @@ export class Currencies extends Component {
     this.setState({...state, selectedCurrency: curr})
   }
   render() {
-    const {handleClick, state, props} = this
-    const {currencies} = state
+    const {handleClick, state, props, showDropdown} = this
+    const {currencies, showCurrencies} = state
     const selectedCurrency = state.selectedCurrency//props.shop?.currency
 
     return (
-      <div className='Currencies'>
-        <div>Selected currency: <small>{selectedCurrency}</small></div>
-        {currencies.map(e => <div key={e.label} label={e.label} onClick={handleClick}>{e.symbol}</div>)}
+      <div className='Currencies flex group-right'>
+        <div><b onClick={showDropdown}>{selectedCurrency}</b>
+          <div className={`dropdown ${showCurrencies ? 'show' : 'hide'}`}>
+            {currencies.map(e => <div key={e.label} label={e.label} onClick={handleClick}>{e.symbol}</div>)}
+          </div>
+        </div>
+        
+        
       </div>
     )
   }

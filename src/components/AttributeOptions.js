@@ -16,6 +16,16 @@ export class AttributeOptions extends Component {
     })
   }
 
+  componentDidMount = () => {
+    const {productId, name, value, index, changePreselect} = this.props
+    if (index !== 0) return
+    changePreselect({
+      id: productId,
+      attributeName: name,
+      attributeValue: value,
+    })
+  }
+
 
   render() {
     const {props, handleChange} = this

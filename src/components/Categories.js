@@ -22,7 +22,7 @@ export default class Categories extends Component {
     const { state } = this
 
     return (
-      <div className='Categories'>
+      <div className='Categories flex group-left'>
         {state.categories.map(e => <Category key={e.name} name={e.name} />)}
       </div>
     )

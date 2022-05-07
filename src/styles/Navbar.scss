@@ -1,0 +1,53 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  .Currencies {
+    justify-content: flex-end;
+    
+  }
+  .Categories {
+    display: flex;
+    
+    .Category {
+      padding: 1em 0.5em;
+      &.selected {
+        // color: green;
+        // border-bottom: 2px solid green;
+      }
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.group-left, .group-right {
+  width: 50%;
+}
+
+
+.logo {
+  position: relative;
+}
+
+.logo img {
+    position: absolute;
+    width: initial;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.logo img:nth-child(1) {
+  top: -3px;
+}
+
+.logo img:nth-child(3) {
+  top: 10px;
+}
+
+.logo img:nth-child(4) {
+  top: 7px;
+  left: 7px;
+}
+

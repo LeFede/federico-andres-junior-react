@@ -12,26 +12,22 @@ import CounterPage from './pages/Counter'
 import ProductPage from './pages/ProductPage'
 import Currencies from './components/Currencies';
 import Categories from './components/Categories';
+import Navbar from './components/Navbar';
 
 export default  class App extends Component {
   render() {
     return (
-      <>
-        <nav>
-          <Link to='/'>Home</Link>
-          {/* <Link to='/counter'> Counter</Link>
-          <Link to='/asdqwe'> a cualquier lado xd</Link> */}
-          {/* <Link to='/product/huarache-x-stussy-le'> Al producto jej</Link> */}
-          <Categories />
-          <Currencies/>
-        </nav>
-        <Switch>
-          <Route exact path='/' component={HomePage} />
-          {/* <Route path='/counter' component={CounterPage} /> */}
-          <Route path='/product/:id' component={ProductPage} />
-          <Route path='*' component={NotFoundPage} />
-        </Switch>
-      </>
+      <div className='App'>
+        <Navbar />
+        <div className='container'>
+          <Switch>
+              <Route exact path='/' component={HomePage} />
+              {/* <Route path='/counter' component={CounterPage} /> */}
+              <Route path='/product/:id' component={ProductPage} />
+              <Route path='*' component={NotFoundPage} />
+          </Switch>
+        </div>
+      </div>
     )
   }
 }

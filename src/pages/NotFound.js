@@ -5,7 +5,7 @@ export default class NotFoundPage extends Component {
   render() {
     //const {counter} = this.props
     return (
-      <div className='NotFound'>
+      <div className='NotFound page'>
         <h1>Not Found</h1>
       </div>
     )
